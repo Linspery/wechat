@@ -39,7 +39,11 @@
       </dependency>
 
   </dependencies>
-
+<project>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+</project>
 
   <build>
     <finalName>wechat</finalName>
