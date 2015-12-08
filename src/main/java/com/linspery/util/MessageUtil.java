@@ -158,7 +158,7 @@ public class MessageUtil {
     public static String initImageMessage(String toUserName,String fromUserName){
         String message = null;
         Image image =new Image();
-        image.setMediaId("Uor2hNSC_vObaRoJ2yow-H13xMuzp7N9Weer3zpVe8OJMKJTfSdmIYK61Qb3oGsA");
+        image.setMediaId("jX9waxLL5COxzI1PhPtOcNZ23kNsUnTw8Bpb3NhGwP0UL-qAhgJ-eTbIqHpZJcDG");
         ImageMessage imageMessage =new ImageMessage();
         imageMessage.setFromUserName(toUserName);
         imageMessage.setToUserName(fromUserName);
@@ -173,7 +173,7 @@ public class MessageUtil {
     public static String initMusicMessage(String toUserName,String fromUserName){
         String message = null;
         Music music =new Music();
-        music.setThumbMediaId("bPDDQzKh3UcRJdXdcTORYrZi_XV69MkiNqEc8mMxcAa7oTE860qH4HU1Jo3WRBHi");
+        music.setThumbMediaId("ypI5DqmKJ3YLZR2fbDsofjkhbRwRsIrGFHxlPTM9aGUbS5Mci8AqyL4boLuOMN3L");
         music.setTitle("甜甜的");
         music.setDescription("周杰伦的歌");
         music.setMusicUrl("http://wechat-linspery.coding.io/music/sweat.mp3");
