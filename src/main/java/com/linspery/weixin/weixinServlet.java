@@ -72,6 +72,11 @@ public class weixinServlet extends HttpServlet {
                 String eventype = map.get("Event");
                 if (MessageUtil.MESSAGE_SUBSCRIBE.equals(eventype)){
                     message = MessageUtil.initText(toUserName,fromUserName,MessageUtil.menuText());
+                }else if (MessageUtil.MESSAGE_CLICK.equals(eventype)){
+                    message = MessageUtil.initText(toUserName,fromUserName,MessageUtil.menuText());
+                }else if (MessageUtil.MESSAGE_VIEW.equals(eventype)){
+                    String url = map.get("EventKey");
+                    message = MessageUtil.initText(toUserName,fromUserName,url);
                 }
 
             }

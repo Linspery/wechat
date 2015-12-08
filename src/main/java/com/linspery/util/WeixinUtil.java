@@ -2,6 +2,10 @@ package com.linspery.util;
 
 
 import com.linspery.bean.*;
+import com.linspery.menu.Button;
+import com.linspery.menu.ClickButton;
+import com.linspery.menu.Menu;
+import com.linspery.menu.ViewButton;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;
@@ -24,11 +28,12 @@ import java.security.NoSuchProviderException;
  * Created by Linspery on 15/12/1.
  */
 public class WeixinUtil {
-    private static String APPID = "wx737d9e3ee8af483d";
-    private static String APPSECRET = "d4624c36b6795d1d99dcf0547af5443d";
-    private static String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-    private static String WEATHER_URL = "http://wthrcdn.etouch.cn/weather_mini?city=LOCAL";
+    private static final String APPID = "wx737d9e3ee8af483d";
+    private static final String APPSECRET = "d4624c36b6795d1d99dcf0547af5443d";
+    private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
+    private static final String WEATHER_URL = "http://wthrcdn.etouch.cn/weather_mini?city=LOCAL";
     private static final String UPLOAD_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
+    private static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 
     public static JSONObject doGetstr(String url){
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -214,6 +219,50 @@ public class WeixinUtil {
         }
         String mediaId = jsonObj.getString(typeName);
         return mediaId;
+    }
+//menu
+    public static Menu initMenu(){
+        Menu menu = new Menu();
+        ClickButton button1 = new ClickButton();
+        button1.setName("click菜单");
+        button1.setType("click");
+        button1.setKey("1");
+
+        ViewButton button2 = new ViewButton();
+        button2.setName("View菜单");
+        button2.setType("view");
+        button2.setUrl("http://www.qq.com");
+
+        ClickButton button3 = new ClickButton();
+        button3.setName("扫码菜单");
+        button3.setType("scancode_push");
+        button3.setKey("3");
+
+        ClickButton button4 = new ClickButton();
+        button4.setName("地理位置菜单");
+        button4.setType("location_select");
+        button4.setKey("4");
+
+        Button button = new Button();
+        button.setName("菜单");
+        button.setSub_button(new Button[]{button3,button4});
+
+        menu.setButton(new Button[]{button1,button2,button});
+        System.out.println(menu.getButton()[0].getName());
+        System.out.println(menu.getButton()[1].getName());
+        System.out.println(menu.getButton()[2].getName());
+        return menu;
+    }
+
+    public static int createMenu(String token,String menu){
+        int result = 0;
+        String url = CREATE_MENU_URL.replace("ACCESS_TOKEN",token);
+        JSONObject jsonObject = doPoststr(url,menu);
+        if(jsonObject != null){
+            result=jsonObject.getInt("errcode");
+        }
+        return result;
+
     }
 
 
