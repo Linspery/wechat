@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class MessageUtil {
     public static final String MESSAGE_TEXT = "text";
-    public static final String MESSAGE_IMAGE = "WEB-INF/image";
+    public static final String MESSAGE_IMAGE = "image";
     public static final String MESSAGE_VOICE = "voice";
     public static final String MESSAGE_VIDEO = "video";
     public static final String MESSAGE_LINK = "link";
@@ -30,7 +30,7 @@ public class MessageUtil {
     public static final String MESSAGE_CLICK = "CLICK";
     public static final String MESSAGE_VIEW = "VIEW";
     public static final String MESSAGE_NEWS = "news";
-    public static final String MESSAGE_MUSIC = "WEB-INF/music";
+    public static final String MESSAGE_MUSIC = "music";
 
 
     public static Map<String,String> xmlToMap(HttpServletRequest request) throws IOException, DocumentException {
