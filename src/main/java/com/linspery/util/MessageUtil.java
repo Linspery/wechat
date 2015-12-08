@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class MessageUtil {
     public static final String MESSAGE_TEXT = "text";
-    public static final String MESSAGE_IMAGE = "image";
+    public static final String MESSAGE_IMAGE = "WEB-INF/image";
     public static final String MESSAGE_VOICE = "voice";
     public static final String MESSAGE_VIDEO = "video";
     public static final String MESSAGE_LINK = "link";
@@ -30,7 +30,7 @@ public class MessageUtil {
     public static final String MESSAGE_CLICK = "CLICK";
     public static final String MESSAGE_VIEW = "VIEW";
     public static final String MESSAGE_NEWS = "news";
-    public static final String MESSAGE_MUSIC = "music";
+    public static final String MESSAGE_MUSIC = "WEB-INF/music";
 
 
     public static Map<String,String> xmlToMap(HttpServletRequest request) throws IOException, DocumentException {
@@ -123,7 +123,7 @@ public class MessageUtil {
         News news = new News();
         news.setTitle("新闻");
         news.setDescription("描述");
-        news.setPicUrl("http://linspery.ngrok.cc/weixin/image/qrcode.jpg");
+        news.setPicUrl("http://wechat-linspery.coding.io/image/qrcode.jpg");
         news.setUrl("http://www.qq.com");
 
         newsList.add(news);
@@ -176,8 +176,8 @@ public class MessageUtil {
         music.setThumbMediaId("bPDDQzKh3UcRJdXdcTORYrZi_XV69MkiNqEc8mMxcAa7oTE860qH4HU1Jo3WRBHi");
         music.setTitle("甜甜的");
         music.setDescription("周杰伦的歌");
-        music.setMusicUrl("http://linspery.ngrok.cc/weixin/music/sweat.mp3");
-        music.setHQMusicUrl("http://linspery.ngrok.cc/weixin/music/sweat.mp3");
+        music.setMusicUrl("http://wechat-linspery.coding.io/music/sweat.mp3");
+        music.setHQMusicUrl("http://wechat-linspery.coding.io/music/sweat.mp3");
         MusicMessage musicMessage =new MusicMessage();
 
         musicMessage.setFromUserName(toUserName);
