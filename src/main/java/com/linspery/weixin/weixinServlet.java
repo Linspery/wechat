@@ -77,7 +77,14 @@ public class weixinServlet extends HttpServlet {
                 }else if (MessageUtil.MESSAGE_VIEW.equals(eventype)){
                     String url = map.get("EventKey");
                     message = MessageUtil.initText(toUserName,fromUserName,url);
+                }else if (MessageUtil.MESSAGE_SCANCODE.equals(eventype)){
+                    String key = map.get("EventKey");
+                    message = MessageUtil.initText(toUserName,fromUserName,key);
                 }
+
+            }else if (MessageUtil.MESSAGE_LOCATION.equals(msgType)){
+                String lable = map.get("lable");
+                message = MessageUtil.initText(toUserName,fromUserName,lable);
 
             }
             out.print(message);
