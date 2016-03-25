@@ -34,6 +34,9 @@ public class WeixinUtil {
     private static final String WEATHER_URL = "http://wthrcdn.etouch.cn/weather_mini?city=LOCAL";
     private static final String UPLOAD_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";
     private static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
+    private static final String QUERY_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN";
+    private static final String DELET_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN";
+
 
     public static JSONObject doGetstr(String url){
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -261,6 +264,26 @@ public class WeixinUtil {
         if(jsonObject != null){
             result=jsonObject.getInt("errcode");
         }
+
+        return result;
+
+    }
+
+    public static JSONObject queryMenu(String token){
+        String url = QUERY_MENU_URL.replace("ACCESS_TOKEN",token);
+        JSONObject jsonObject = doGetstr(url);
+        return jsonObject;
+    }
+
+    public static int deletMenu(String token,String menu){
+        int result = 0;
+        String url = DELET_MENU_URL.replace("ACCESS_TOKEN",token);
+        JSONObject jsonObject = doGetstr(url);
+
+        if(jsonObject != null){
+            result=jsonObject.getInt("errcode");
+        }
+
         return result;
 
     }
